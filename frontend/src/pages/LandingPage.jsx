@@ -165,6 +165,82 @@ function HeroSection() {
           </div>
         </div>
       </div>
+      {/*PACKAES*/}
+      <div
+  className="pricing-section py-5"
+  style={{
+    backgroundImage: "url('bg.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    color: "#fff",
+  }}
+>
+  <div className="text-center mb-5">
+    <h2 className="display-4 fw-bold" style={{ color: "#000" }}>
+      Tools Tailored For <span className="text-primary">You</span>
+    </h2>
+  </div>
+  <div className="container d-flex justify-content-center flex-wrap">
+    {/* Pricing Cards */}
+    {["Starter", "Advanced", "Professional"].map((plan, index) => {
+      const prices = ["FREE", "$100", "$200"];
+      const descriptions = [
+        "Starter Pack",
+        "Everything in Starter, plus",
+        "Starter Pack",
+      ];
+      return (
+        <div
+          className="card text-center mx-3 mb-4 d-flex flex-column justify-content-between"
+          style={{
+            maxWidth: "300px",
+            border: "none",
+            borderRadius: "15px",
+            background: "rgba(255, 255, 255, 0.85)",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            height: "400px",
+          }}
+          key={index}
+        >
+          <div className="card-body">
+            <h5 className="card-title fw-bold">{plan}</h5>
+            <p className="text-muted">{descriptions[index]}</p>
+            <h3 className="fw-bold">{prices[index]}</h3>
+            <ul className="list-unstyled mt-3 mb-4 text-start">
+              <li className="mb-2 d-flex align-items-center">
+                <i className="bi bi-check-circle-fill text-success me-2"></i>
+                Access to Bionic Reading tools
+              </li>
+              <li className="mb-2 d-flex align-items-center">
+                <i className="bi bi-check-circle-fill text-success me-2"></i>
+                Basic Text-to-Speech support
+              </li>
+              <li className="mb-2 d-flex align-items-center">
+                <i className="bi bi-check-circle-fill text-success me-2"></i>
+                Visual aids for better comprehension
+              </li>
+              <li className="d-flex align-items-center">
+                <i className="bi bi-check-circle-fill text-success me-2"></i>
+                Limited Progress Tracking features
+              </li>
+            </ul>
+          </div>
+          <div className="card-footer border-0 bg-transparent">
+            <button className="btn btn-success btn-lg">
+              {plan === "Starter"
+                ? "Try For Free"
+                : `Upgrade to ${plan}`}
+            </button>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+
+
     </div>
   );
 }
