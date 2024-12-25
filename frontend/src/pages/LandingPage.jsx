@@ -1,5 +1,4 @@
 import React from "react";
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function HeroSection() {
   return (
@@ -14,10 +13,10 @@ function HeroSection() {
           backgroundPosition: "center",
         }}
       >
-        <header className="d-flex justify-content-between w-100 px-5 py-3">
+        <header className="d-flex justify-content-between w-100 px-5">
           <h1 className="text-primary">FocusLearn</h1>
           <nav>
-            <a href="#read" className="text-dark mx-3 text-decoration-none">
+            <a href="/bionic-reading" className="text-dark mx-3 text-decoration-none">
               Read
             </a>
             <a
@@ -26,8 +25,11 @@ function HeroSection() {
             >
               Community
             </a>
-            <a href="#login" className="text-dark mx-3 text-decoration-none">
+            <a href="/login" className="text-dark mx-3 text-decoration-none">
               Login
+            </a>
+            <a href="/signup" className="text-dark mx-3 text-decoration-none">
+             Signup
             </a>
           </nav>
         </header>

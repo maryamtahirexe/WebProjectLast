@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import CommunityPage from './pages/CommunityPage';
 import BionicReadingPage from './pages/BionicReadingPage';
-
+import './App.css';
 function App() {
   return (
     <Router>
