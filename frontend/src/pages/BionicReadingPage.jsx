@@ -41,6 +41,8 @@ function BionicReadingPage() {
   };
 
   return (
+    <div className="main">
+      <Navbar />
     <div
       className="container d-flex flex-column align-items-center justify-content-center"
       style={{
@@ -53,7 +55,6 @@ function BionicReadingPage() {
         fontFamily: 'Arial, sans-serif',
       }}
     >
-      <Navbar />
       <h1 className="mb-4" style={{ color: '#1A73E8' }}>BIONIC READING</h1>
       <p>Upload A File To Get Started!</p>
       <div className="card p-4 shadow" style={{ width: '500px' }}>
@@ -92,11 +93,28 @@ function BionicReadingPage() {
         {error && <p className="text-danger">{error}</p>}
       </div>
       {output && (
-        <div className="mt-4">
-          <h3>Processed Text:</h3>
-          <p>{output}</p>
-        </div>
-      )}
+        <div className="card shadow p-4 mt-4"
+        style={{
+        width: '80%',
+        maxWidth: '700px',
+        height: '400px',
+        overflowY: 'scroll',
+        backgroundColor: '#f9f9f9',
+        borderRadius: '10px',
+      }}
+      >
+      <h3 className="mb-3 text-primary">Read Text</h3>
+      <div
+        style={{
+          lineHeight: '1.8',
+          fontSize: '16px',
+        }}
+        dangerouslySetInnerHTML={{ __html: output }}
+    />
+  </div>
+)}
+
+    </div>
     </div>
   );
 }
