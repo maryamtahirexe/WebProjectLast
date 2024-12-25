@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const pdfParse = require('pdf-parse');
+
 
 // Load environment variables
 dotenv.config();
@@ -155,6 +157,7 @@ const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 } 
+
 app.post('/api/upload', upload.single('file'), (req, res) => {
   try {
     if (!req.file) {
@@ -164,16 +167,27 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     const filePath = req.file.path;
     const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-    // Simple Bionic Text Processing (Example Logic)
+    // Enhanced Bionic Text Processing
     const processedText = fileContent
       .split(' ')
-      .map(word =>
-        word.length > 1
-          ? `<b>${word.slice(0, Math.ceil(word.length / 2))}</b>${word.slice(
-              Math.ceil(word.length / 2)
-            )}`
-          : word
-      )
+      .map(word => {
+        // Strip non-alphanumeric characters at the start or end of the word
+        const match = word.match(/^(\W*)(\w+)(\W*)$/);
+        if (!match) return word;
+
+        const [, prefix, coreWord, suffix] = match;
+
+        if (coreWord.length <= 2) {
+          // Skip processing for very short words
+          return word;
+        }
+
+        const splitIndex = Math.ceil(coreWord.length * 0.4); // Use 40% of the word length
+        const boldPart = `<b>${coreWord.slice(0, splitIndex)}</b>`;
+        const restPart = coreWord.slice(splitIndex);
+
+        return `${prefix}${boldPart}${restPart}${suffix}`;
+      })
       .join(' ');
 
     res.status(200).json({ processedText });
