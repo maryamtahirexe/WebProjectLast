@@ -20,7 +20,7 @@ function HeroSection() {
               Read
             </a>
             <a
-              href="#community"
+              href="/community"
               className="text-dark mx-3 text-decoration-none"
             >
               Community
