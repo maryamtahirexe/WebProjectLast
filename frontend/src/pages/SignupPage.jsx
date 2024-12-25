@@ -25,8 +25,8 @@ function SignupPage() {
   };
 
   return (
-    <div className="main "><Navbar />
-    <div className="d-flex vh-100" style={{ backgroundColor: '#f8f9fa',minWidth:'100vw' }}>
+    <div className="main vh-100 "><Navbar />
+    <div className="d-flex " style={{ backgroundColor: '#f8f9fa',minWidth:'100vw' }}>
       {/* Left Section */}
       <div
         className="col-md-6 d-flex flex-column justify-content-center align-items-center"

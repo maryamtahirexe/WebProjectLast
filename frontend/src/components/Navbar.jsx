@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <header className="d-flex justify-content-between w-100 px-5">
+    <header className="d-flex justify-content-between w-100 px-5 py-2">
       <a href="/" className="text-dark mx-3 text-decoration-none"><h1 className="text-primary">
        FocusLearn</h1> </a>
       <nav>

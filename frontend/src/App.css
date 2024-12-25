@@ -1,5 +1,23 @@
+:root {
+  --primary-blue: #0382e4;
+}
 * {
   font-family: "Jacques Francois", serif;
   box-sizing: border-box;
   margin: 0;
+}
+a {
+  color: var(--primary-blue);
+}
+h1,
+h2,
+h3 {
+  color: var(--primary-blue);
+}
+a:hover {
+  color: var(--primary-blue);
+}
+button {
+  background-color: var(--primary-blue);
+  color: white;
 }
