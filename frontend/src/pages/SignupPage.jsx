@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function SignupPage() {
   const [name, setName] = useState('');
@@ -24,6 +25,7 @@ function SignupPage() {
   };
 
   return (
+    <div className="main "><Navbar />
     <div className="d-flex vh-100" style={{ backgroundColor: '#f8f9fa',minWidth:'100vw' }}>
       {/* Left Section */}
       <div
@@ -97,6 +99,7 @@ function SignupPage() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -24,7 +25,9 @@ function LoginPage() {
   };
 
   return (
+    <div className="main"><Navbar />
     <div className="d-flex align-items-center justify-content-center vh-100 bg-light" style={{minWidth: '100vw',minHeight: '100vh'}}>
+      
       <div className="card shadow-lg" style={{ maxWidth: '900px', borderRadius: '20px' }}>
         <div className="row g-0">
           <div className="col-md-6 p-5">
@@ -100,6 +103,7 @@ function LoginPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

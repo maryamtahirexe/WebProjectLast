@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 function BionicReadingPage() {
   const [file, setFile] = useState(null);
@@ -52,6 +53,7 @@ function BionicReadingPage() {
         fontFamily: 'Arial, sans-serif',
       }}
     >
+      <Navbar />
       <h1 className="mb-4" style={{ color: '#1A73E8' }}>BIONIC READING</h1>
       <p>Upload A File To Get Started!</p>
       <div className="card p-4 shadow" style={{ width: '500px' }}>
