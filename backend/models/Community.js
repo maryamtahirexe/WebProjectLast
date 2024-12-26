@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
 
-const communitySchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  },
-  { timestamps: true }
-);
+const CommunitySchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  members: { type: Number, default: 0 },
+  image: { type: String, required: true },
+});
 
-module.exports = mongoose.model('Community', communitySchema);
+module.exports = mongoose.model('Community', CommunitySchema);
