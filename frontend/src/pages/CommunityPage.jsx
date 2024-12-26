@@ -24,7 +24,7 @@ function CommunityPage() {
             alt="Profile"
             style={{ borderRadius: "50%", width: "120px", height: "120px" }} // Increased size
           />
-          <h4 style={{ marginTop: "10px" }}>Sara Atif</h4>
+          <h4 style={{ marginTop: "10px" }}>Khaula Nauman</h4>
           <button style={{ background: "none", color: "#fff", border: "none", marginTop: "10px" }}>
             Edit Profile
           </button>

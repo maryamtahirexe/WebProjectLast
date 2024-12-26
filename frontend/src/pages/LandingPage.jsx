@@ -4,7 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function LandingPage() {
   return (
     <div>
-      {/* Hero Section */}
+      <Navbar />
       <div
         className="hero-section text-center text-dark d-flex flex-column align-items-center justify-content-center"
         style={{
@@ -14,9 +14,8 @@ function LandingPage() {
           backgroundPosition: "center",
         }}
       >
-        <Navbar />
         <div className="hero-content mt-5">
-          <h2 className="display-4 fw-bold">
+          <h2 className="display-4">
             YOUR EDUCATION, <span className="text-primary">reimagined</span>
           </h2>
           <p className="mt-3">
@@ -56,9 +55,9 @@ function LandingPage() {
       {/* Mission Section */}
       <div className="mission-section container d-flex flex-wrap align-items-center py-5">
         <div className="content col-md-6">
-          <h2 className="text-primary fw-bold mb-4">Our Mission</h2>
+          <h2 className="text-primary  mb-4">Our Mission</h2>
           <p>
-            We believe that every <span className="fw-bold">learner</span> deserves a platform designed to accommodate their unique strengths, challenges, and potential.
+            We believe that every <span className="">learner</span> deserves a platform designed to accommodate their unique strengths, challenges, and potential.
           </p>
           <div className="mission-items mt-4">
             <div className="mission-item d-flex align-items-center mb-4">
@@ -106,12 +105,12 @@ function LandingPage() {
 
       {/* "What Awaits You" Section */}
       <div className="what-awaits-you container text-center py-5">
-        <h2 className="fw-bold mb-4">What awaits <span className="text-primary">you</span>?</h2>
+        <h2 className=" mb-4">What awaits <span className="text-primary">you</span>?</h2>
         <div className="row justify-content-center">
           <div className="col-md-3 p-3">
             <div className="card border-0 shadow-sm h-100" style={{ backgroundColor: "#f8f9fa" }}>
               <div className="card-body">
-                <h5 className="card-title fw-bold">Personalized Learning Tools</h5>
+                <h5 className="card-title ">Personalized Learning Tools</h5>
                 <div className="icon mb-3">
                   <i className="bi bi-tools text-warning fs-1"></i>
                 </div>
@@ -124,7 +123,7 @@ function LandingPage() {
           <div className="col-md-3 p-3">
             <div className="card border-0 shadow-sm h-100" style={{ backgroundColor: "#f8f9fa" }}>
               <div className="card-body">
-                <h5 className="card-title fw-bold">Tailored to Your Needs</h5>
+                <h5 className="card-title ">Tailored to Your Needs</h5>
                 <div className="icon mb-3">
                   <i className="bi bi-person-check text-primary fs-1"></i>
                 </div>
@@ -136,8 +135,8 @@ function LandingPage() {
           </div>
           <div className="col-md-3 p-3">
             <div className="card border-0 shadow-sm h-100" style={{ backgroundColor: "#f8f9fa" }}>
-              <div className="card-body">
-                <h5 className="card-title fw-bold">Your Journey to Growth</h5>
+              <div className="card-body pb-5">
+                <h5 className="card-title ">Your Journey to Growth</h5>
                 <div className="icon mb-3">
                   <i className="bi bi-graph-up text-success fs-1"></i>
                 </div>
@@ -149,10 +148,9 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      {/*PACKAES*/}
       <div
-  className="pricing-section py-5"
-  style={{
+      className="pricing-section py-5"
+      style={{
     backgroundImage: "url('bg.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -161,7 +159,7 @@ function LandingPage() {
   }}
 >
   <div className="text-center mb-5">
-    <h2 className="display-4 fw-bold" style={{ color: "#000" }}>
+    <h2 className="display-4" style={{ color: "#000" }}>
       Tools Tailored For <span className="text-primary">You</span>
     </h2>
   </div>
@@ -188,9 +186,9 @@ function LandingPage() {
           key={index}
         >
           <div className="card-body">
-            <h5 className="card-title fw-bold">{plan}</h5>
+            <h5 className="card-title ">{plan}</h5>
             <p className="text-muted">{descriptions[index]}</p>
-            <h3 className="fw-bold">{prices[index]}</h3>
+            <h3 className="">{prices[index]}</h3>
             <ul className="list-unstyled mt-3 mb-4 text-start">
               <li className="mb-2 d-flex align-items-center">
                 <i className="bi bi-check-circle-fill text-success me-2"></i>
