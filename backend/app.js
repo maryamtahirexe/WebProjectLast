@@ -6,17 +6,22 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const pdfParse = require('pdf-parse');
+
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5174;
-
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow only your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // Include cookies if needed
+}));
 
 // MongoDB Connection
 mongoose
@@ -147,6 +152,11 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+} 
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
   try {
@@ -154,10 +164,33 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
       return res.status(400).json({ message: 'No file uploaded.' });
     }
 
-    res.status(200).json({
-      message: 'File uploaded successfully.',
-      filePath: `/uploads/${req.file.filename}`,
-    });
+    const filePath = req.file.path;
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+
+    // Enhanced Bionic Text Processing
+    const processedText = fileContent
+      .split(' ')
+      .map(word => {
+        // Strip non-alphanumeric characters at the start or end of the word
+        const match = word.match(/^(\W*)(\w+)(\W*)$/);
+        if (!match) return word;
+
+        const [, prefix, coreWord, suffix] = match;
+
+        if (coreWord.length <= 2) {
+          // Skip processing for very short words
+          return word;
+        }
+
+        const splitIndex = Math.ceil(coreWord.length * 0.4); // Use 40% of the word length
+        const boldPart = <b>${coreWord.slice(0, splitIndex)}</b>;
+        const restPart = coreWord.slice(splitIndex);
+
+        return `${prefix}${boldPart}${restPart}${suffix}`;
+      })
+      .join(' ');
+
+    res.status(200).json({ processedText });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error.' });
