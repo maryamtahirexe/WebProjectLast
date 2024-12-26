@@ -8,6 +8,8 @@ const multer = require('multer');
 const path = require('path');
 const pdfParse = require('pdf-parse');
 
+const pdfParse = require('pdf-parse');
+
 
 // Load environment variables
 dotenv.config();

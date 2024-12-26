@@ -1,6 +1,7 @@
 import React from "react";
-
-function HeroSection() {
+import Navbar from '../components/Navbar';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+function LandingPage() {
   return (
     <div>
       {/* Hero Section */}
@@ -13,26 +14,7 @@ function HeroSection() {
           backgroundPosition: "center",
         }}
       >
-        <header className="d-flex justify-content-between w-100 px-5">
-          <h1 className="text-primary">FocusLearn</h1>
-          <nav>
-            <a href="/bionic-reading" className="text-dark mx-3 text-decoration-none">
-              Read
-            </a>
-            <a
-              href="/community"
-              className="text-dark mx-3 text-decoration-none"
-            >
-              Community
-            </a>
-            <a href="/login" className="text-dark mx-3 text-decoration-none">
-              Login
-            </a>
-            <a href="/signup" className="text-dark mx-3 text-decoration-none">
-             Signup
-            </a>
-          </nav>
-        </header>
+        <Navbar />
         <div className="hero-content mt-5">
           <h2 className="display-4 fw-bold">
             YOUR EDUCATION, <span className="text-primary">reimagined</span>
@@ -228,7 +210,7 @@ function HeroSection() {
               </li>
             </ul>
           </div>
-          <div className="card-footer border-0 bg-transparent">
+          <div className="card-footer me-10 border-0 bg-transparent">
             <button className="btn btn-success btn-lg">
               {plan === "Starter"
                 ? "Try For Free"
@@ -247,4 +229,4 @@ function HeroSection() {
   );
 }
 
-export default HeroSection;
+export default LandingPage;
