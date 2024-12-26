@@ -6,7 +6,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
-const pdfParse = require('pdf-parse');
 
 const pdfParse = require('pdf-parse');
 
@@ -185,7 +184,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
         }
 
         const splitIndex = Math.ceil(coreWord.length * 0.4); // Use 40% of the word length
-        const boldPart = <b>${coreWord.slice(0, splitIndex)}</b>;
+        const boldPart = `<b>${coreWord.slice(0, splitIndex)}</b>`;
         const restPart = coreWord.slice(splitIndex);
 
         return `${prefix}${boldPart}${restPart}${suffix}`;
