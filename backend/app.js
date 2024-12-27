@@ -6,17 +6,19 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
-
+const fs = require('fs');
 const pdfParse = require('pdf-parse');
-
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5174;
+
 // Middleware
 app.use(express.json());
+
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
   origin: 'http://localhost:5173', // Allow only your frontend origin
@@ -29,7 +31,6 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
-
 
 // User Model
 const userSchema = new mongoose.Schema({
@@ -44,8 +45,13 @@ const User = mongoose.model('User', userSchema);
 const communitySchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
+  image: { type: String, required: true }, // For storing image paths
   members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 }, { timestamps: true });
+
+
+const joinRequestRoute = require("./routes/joinRequest");
+app.use("/api/joinRequest", joinRequestRoute);
 
 const Community = mongoose.model('Community', communitySchema);
 
@@ -109,8 +115,8 @@ app.get('/api/community', async (req, res) => {
 
 app.post('/api/community', async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const newCommunity = new Community({ name, description });
+    const { name, description, image } = req.body;
+    const newCommunity = new Community({ name, description, image });
     await newCommunity.save();
     res.status(201).json(newCommunity);
   } catch (err) {
@@ -153,11 +159,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-const fs = require('fs');
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
-} 
+}
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
   try {
@@ -172,18 +177,16 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     const processedText = fileContent
       .split(' ')
       .map(word => {
-        // Strip non-alphanumeric characters at the start or end of the word
         const match = word.match(/^(\W*)(\w+)(\W*)$/);
         if (!match) return word;
 
         const [, prefix, coreWord, suffix] = match;
 
         if (coreWord.length <= 2) {
-          // Skip processing for very short words
           return word;
         }
 
-        const splitIndex = Math.ceil(coreWord.length * 0.4); // Use 40% of the word length
+        const splitIndex = Math.ceil(coreWord.length * 0.4);
         const boldPart = `<b>${coreWord.slice(0, splitIndex)}</b>`;
         const restPart = coreWord.slice(splitIndex);
 
