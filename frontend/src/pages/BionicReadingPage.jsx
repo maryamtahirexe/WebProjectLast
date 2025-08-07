@@ -7,7 +7,7 @@ function BionicReadingPage() {
   const [progress, setProgress] = useState(0);
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
-  const [isUploaded, setIsUploaded] = useState(false); // State to toggle between views
+  const [isUploaded, setIsUploaded] = useState(false); 
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
