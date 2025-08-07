@@ -12,7 +12,7 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5174/api/auth/login', {
+      const response = await axios.post('https://lastwebprojectbackend-production.up.railway.app/api/auth/login', {
         email,
         password,
       });

@@ -24,7 +24,7 @@ function BionicReadingPage() {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:5174/api/upload', formData, {
+      const response = await axios.post('https://lastwebprojectbackend-production.up.railway.app/api/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);

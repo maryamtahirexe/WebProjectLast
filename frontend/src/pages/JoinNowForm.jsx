@@ -29,7 +29,7 @@ const JoinNowForm = () => {
 
   async function submitJoinRequest() {
     try {
-      let response = await fetch("http://localhost:5173/api/joinRequest", {
+      let response = await fetch("https://lastwebprojectbackend-production.up.railway.app/api/joinRequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

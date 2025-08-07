@@ -2,24 +2,48 @@ import React from "react";
 
 function Navbar() {
   return (
-    <header className="d-flex justify-content-between w-100 px-5 py-2">
-      <a href="/" className="text-dark mx-3 text-decoration-none"><h1 className="text-primary">
-       FocusLearn</h1> </a>
-      <nav>
-        <a href="/bionic-reading" className="text-dark mx-3 text-decoration-none">
-          Read
-        </a>
-        <a href="/community" className="text-dark mx-3 text-decoration-none">
-          Community
-        </a>
-        <a href="/login" className="text-dark mx-3 text-decoration-none">
-          Login
-        </a>
-        <a href="/signup" className="text-dark mx-3 text-decoration-none">
-          Signup
-        </a>
-      </nav>
-    </header>
+    <nav className="navbar navbar-expand-lg navbar-light bg-white px-4 py-3 shadow-sm">
+      <a className="navbar-brand text-primary fw-bold" href="/">
+        FocusLearn
+      </a>
+
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item mx-2">
+            <a className="nav-link text-dark" href="/bionic-reading">
+              Read
+            </a>
+          </li>
+          <li className="nav-item mx-2">
+            <a className="nav-link text-dark" href="/community">
+              Community
+            </a>
+          </li>
+          <li className="nav-item mx-2">
+            <a className="nav-link text-dark" href="/login">
+              Login
+            </a>
+          </li>
+          <li className="nav-item mx-2">
+            <a className="nav-link text-dark" href="/signup">
+              Signup
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 

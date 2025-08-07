@@ -13,7 +13,7 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5174/api/auth/signup', {
+      await axios.post('https://lastwebprojectbackend-production.up.railway.app/api/auth/signup', {
         name,
         email,
         password,
